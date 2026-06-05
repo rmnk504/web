@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%9F%A3</text></svg>">
+<title>Roman ŠVESTKA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FBFAF7;        /* čistý papír */
+    --ink: #1C1C1C;       /* tmavý text */
+    --accent: #3F6B5E;    /* lesní zelená (decentní akcent) */
+    --muted: #8d8b85;     /* tlumená šedá pro vedlejší text */
+  }
+
+  *{ box-sizing: border-box; margin: 0; padding: 0; }
+
+  html{ -webkit-text-size-adjust: 100%; }
+
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Roboto Serif', serif;
+    font-weight: 300;
+    line-height: 1.7;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(1.5rem, 6vw, 5rem);
+    font-size: clamp(1rem, 0.95rem + 0.4vw, 1.15rem);
+  }
+
+  /* Blok wrap - vystředěný na obrazovce, text uvnitř zarovnaný vlevo */
+  .wrap{
+    width: 100%;
+    max-width: 620px;
+  }
+
+  /* Přepínač jazyků */
+  .lang{
+    display: flex;
+    gap: 0.9rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    margin-bottom: clamp(2rem, 6vh, 3.5rem);
+  }
+  .lang button{
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 0;
+    letter-spacing: inherit;
+    transition: color .2s ease;
+  }
+  .lang button:hover{ color: var(--ink); }
+  .lang button.active{ color: var(--accent); font-weight: 500; }
+
+  main{
+    max-width: 620px;
+  }
+
+  h1{
+    font-weight: 500;
+    font-size: clamp(1.6rem, 1.3rem + 1.8vw, 2.4rem);
+    letter-spacing: -0.01em;
+    margin-bottom: 0.3rem;
+  }
+
+  .tagline{
+    color: var(--muted);
+    margin-bottom: clamp(2rem, 6vh, 3.5rem);
+  }
+
+  .desc p{ margin-bottom: 1.1rem; }
+  .desc{ margin-bottom: clamp(2.5rem, 8vh, 4rem); }
+
+  /* Kontakt */
+  .contact{
+    border-top: 1px solid rgba(28,28,28,.15);
+    padding-top: 1.6rem;
+  }
+  .contact .label{
+    display: block;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+  .contact .row{ margin-bottom: 0.4rem; }
+  .contact a{
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(28,28,28,.3);
+    transition: color .2s ease, border-color .2s ease;
+    word-break: break-word;
+  }
+  .contact a:hover{ color: var(--accent); border-color: var(--accent); }
+
+  footer{
+    margin-top: clamp(3rem, 10vh, 6rem);
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+  <div class="wrap">
+  <nav class="lang" aria-label="Volba jazyka">
+    <button data-lang="cs" class="active">CZ</button>
+    <button data-lang="en">EN</button>
+    <button data-lang="de">DE</button>
+  </nav>
+
+  <main>
+    <h1 data-i18n="name">Roman ŠVESTKA</h1>
+    <p class="tagline" data-i18n="tagline"></p>
+
+    <div class="desc" id="desc"></div>
+
+    <div class="contact">
+      <span class="label" data-i18n="contactLabel"></span>
+      <div class="row">
+        <a href="mailto:roman@svestka.xyz">roman@svestka.xyz</a>
+      </div>
+      <div class="row">
+        <a href="tel:+420603466469">+420 603 466 469</a>
+      </div>
+    </div>
+
+    <footer data-i18n="footer"></footer>
+  </main>
+  </div>
+
+<script>
+  // === TEXTY ===  Klidně si je přepiš, struktura zůstává stejná.
+  const i18n = {
+    cs: {
+      htmlLang: "cs",
+      title: "Roman ŠVESTKA",
+      name: "Roman ŠVESTKA",
+      tagline: "Šetřím čas malým firmám a živnostníkům",
+      desc: [
+        "Trávíte hodiny opakovanou ruční prací - přepisováním dat, posíláním stejných e-mailů, vyplňováním formulářů? Postavím automatizaci, která to odbaví za vás, a čas vrátím vám.",
+        "Propojuju vaše aplikace, nastavuju workflow a využívám AI tam, kde dává smysl. Vy se místo rutiny věnujete tomu, co vás živí."
+      ],
+      contactLabel: "Kontakt",
+      footer: "© " + new Date().getFullYear() + " Roman ŠVESTKA"
+    },
+    en: {
+      htmlLang: "en",
+      title: "Roman ŠVESTKA",
+      name: "Roman ŠVESTKA",
+      tagline: "Saving time for small businesses and sole traders",
+      desc: [
+        "Spending hours on repetitive manual work - retyping data, sending the same emails, filling in forms? I build automation that handles it for you and gives the time back.",
+        "I connect your apps, set up workflows, and use AI where it makes sense. Instead of routine, you focus on what actually earns you a living."
+      ],
+      contactLabel: "Contact",
+      footer: "© " + new Date().getFullYear() + " Roman ŠVESTKA"
+    },
+    de: {
+      htmlLang: "de",
+      title: "Roman ŠVESTKA",
+      name: "Roman ŠVESTKA",
+      tagline: "Ich spare kleinen Unternehmen und Selbstständigen Zeit",
+      desc: [
+        "Verbringen Sie Stunden mit wiederkehrender Handarbeit - Daten abtippen, dieselben E-Mails senden, Formulare ausfüllen? Ich baue eine Automatisierung, die das für Sie erledigt, und gebe Ihnen die Zeit zurück.",
+        "Ich verbinde Ihre Anwendungen, richte Workflows ein und setze KI ein, wo es sinnvoll ist. Statt Routine konzentrieren Sie sich auf das, was Ihr Geschäft trägt."
+      ],
+      contactLabel: "Kontakt",
+      footer: "© " + new Date().getFullYear() + " Roman ŠVESTKA"
+    }
+  };
+
+  function setLang(lang){
+    const t = i18n[lang];
+    document.documentElement.lang = t.htmlLang;
+    document.title = t.title;
+
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      if(t[key] !== undefined) el.textContent = t[key];
+    });
+
+    const desc = document.getElementById('desc');
+    desc.innerHTML = '';
+    t.desc.forEach(par=>{
+      const p = document.createElement('p');
+      p.textContent = par;
+      desc.appendChild(p);
+    });
+
+    document.querySelectorAll('.lang button').forEach(b=>{
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+  }
+
+  document.querySelectorAll('.lang button').forEach(btn=>{
+    btn.addEventListener('click', ()=> setLang(btn.dataset.lang));
+  });
+
+  setLang('cs');
+</script>
+</body>
+</html>
