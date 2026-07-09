@@ -9,15 +9,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
+  /* ===== BARVY - Písek + espresso ===== */
   :root{
-    --bg: #FBFAF7;        /* čistý papír */
-    --ink: #1C1C1C;       /* tmavý text */
-    --accent: #3F6B5E;    /* lesní zelená (decentní akcent) */
-    --muted: #8d8b85;     /* tlumená šedá pro vedlejší text */
+    --bg: #EFE8DD;        /* písek */
+    --ink: #33291F;       /* espresso */
+    --accent: #9C6B48;    /* hlína */
+    --muted: #948a7c;     /* tlumená šedá */
   }
 
   *{ box-sizing: border-box; margin: 0; padding: 0; }
-
   html{ -webkit-text-size-adjust: 100%; }
 
   body{
@@ -27,85 +27,50 @@
     font-weight: 300;
     line-height: 1.7;
     min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: clamp(1rem, 0.95rem + 0.4vw, 1.15rem);
+  }
+
+  /* Střed - jméno + kontakt zabírají volný prostor a jsou vycentrované */
+  .center{
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: clamp(1.5rem, 6vw, 5rem);
-    font-size: clamp(1rem, 0.95rem + 0.4vw, 1.15rem);
   }
-
-  /* Blok wrap - vystředěný na obrazovce, text uvnitř zarovnaný vlevo */
-  .wrap{
-    width: 100%;
-    max-width: 620px;
-  }
-
-  /* Přepínač jazyků */
-  .lang{
-    display: flex;
-    gap: 0.9rem;
-    font-size: 0.85rem;
-    letter-spacing: 0.05em;
-    margin-bottom: clamp(2rem, 6vh, 3.5rem);
-  }
-  .lang button{
-    background: none;
-    border: none;
-    font-family: inherit;
-    font-size: inherit;
-    color: var(--muted);
-    cursor: pointer;
-    padding: 0;
-    letter-spacing: inherit;
-    transition: color .2s ease;
-  }
-  .lang button:hover{ color: var(--ink); }
-  .lang button.active{ color: var(--accent); font-weight: 500; }
-
-  main{
-    max-width: 620px;
-  }
+  .wrap{ width: 100%; max-width: 520px; }
 
   h1{
     font-weight: 500;
-    font-size: clamp(1.6rem, 1.3rem + 1.8vw, 2.4rem);
+    font-size: clamp(1.7rem, 1.3rem + 1.9vw, 2.5rem);
     letter-spacing: -0.01em;
-    margin-bottom: 0.3rem;
+    margin-bottom: clamp(2rem, 6vh, 3rem);
   }
 
-  .tagline{
-    color: var(--muted);
-    margin-bottom: clamp(2rem, 6vh, 3.5rem);
-  }
-
-  .desc p{ margin-bottom: 1.1rem; }
-  .desc{ margin-bottom: clamp(2.5rem, 8vh, 4rem); }
-
-  /* Kontakt */
-  .contact{
-    border-top: 1px solid rgba(28,28,28,.15);
-    padding-top: 1.6rem;
-  }
-  .contact .label{
-    display: block;
-    font-size: 0.8rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
+  .contact .row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
     margin-bottom: 0.6rem;
   }
-  .contact .row{ margin-bottom: 0.4rem; }
+  .contact .row svg{ width: 1.05em; height: 1.05em; flex: none; color: var(--muted); }
   .contact a{
     color: var(--ink);
     text-decoration: none;
-    border-bottom: 1px solid rgba(28,28,28,.3);
+    border-bottom: 1px solid rgba(51,41,31,.3);
     transition: color .2s ease, border-color .2s ease;
     word-break: break-word;
   }
   .contact a:hover{ color: var(--accent); border-color: var(--accent); }
 
+  /* Patička - pevně dole na obrazovce */
   footer{
-    margin-top: clamp(3rem, 10vh, 6rem);
+    padding: 1.2rem;
     font-size: 0.8rem;
     color: var(--muted);
   }
@@ -113,102 +78,26 @@
 </head>
 <body>
 
-  <div class="wrap">
-  <nav class="lang" aria-label="Volba jazyka">
-    <button data-lang="cs" class="active">CZ</button>
-    <button data-lang="en">EN</button>
-    <button data-lang="de">DE</button>
-  </nav>
-
-  <main>
-    <h1 data-i18n="name">Roman ŠVESTKA</h1>
-    <p class="tagline" data-i18n="tagline"></p>
-
-    <div class="desc" id="desc"></div>
-
-    <div class="contact">
-      <span class="label" data-i18n="contactLabel"></span>
-      <div class="row">
-        <a href="mailto:roman@svestka.xyz">roman@svestka.xyz</a>
-      </div>
-      <div class="row">
-        <a href="tel:+420603466469">+420 603 466 469</a>
+  <div class="center">
+    <div class="wrap">
+      <h1>Roman ŠVESTKA</h1>
+      <div class="contact">
+        <div class="row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          <a href="mailto:roman@svestka.xyz">roman@svestka.xyz</a>
+        </div>
+        <div class="row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L17 13l4 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg>
+          <a href="tel:+420603466469">+420 603 466 469</a>
+        </div>
       </div>
     </div>
-
-    <footer data-i18n="footer"></footer>
-  </main>
   </div>
 
+  <footer>© <span id="rok"></span> Roman ŠVESTKA</footer>
+
 <script>
-  // === TEXTY ===  Klidně si je přepiš, struktura zůstává stejná.
-  const i18n = {
-    cs: {
-      htmlLang: "cs",
-      title: "Roman ŠVESTKA",
-      name: "Roman ŠVESTKA",
-      tagline: "Šetřím čas malým firmám a živnostníkům",
-      desc: [
-        "Trávíte hodiny opakovanou ruční prací - přepisováním dat, posíláním stejných e-mailů, vyplňováním formulářů? Postavím automatizaci, která to odbaví za vás, a čas vrátím vám.",
-        "Propojuju vaše aplikace, nastavuju workflow a využívám AI tam, kde dává smysl. Vy se místo rutiny věnujete tomu, co vás živí."
-      ],
-      contactLabel: "Kontakt",
-      footer: "© " + new Date().getFullYear() + " Roman ŠVESTKA"
-    },
-    en: {
-      htmlLang: "en",
-      title: "Roman ŠVESTKA",
-      name: "Roman ŠVESTKA",
-      tagline: "Saving time for small businesses and sole traders",
-      desc: [
-        "Spending hours on repetitive manual work - retyping data, sending the same emails, filling in forms? I build automation that handles it for you and gives the time back.",
-        "I connect your apps, set up workflows, and use AI where it makes sense. Instead of routine, you focus on what actually earns you a living."
-      ],
-      contactLabel: "Contact",
-      footer: "© " + new Date().getFullYear() + " Roman ŠVESTKA"
-    },
-    de: {
-      htmlLang: "de",
-      title: "Roman ŠVESTKA",
-      name: "Roman ŠVESTKA",
-      tagline: "Ich spare kleinen Unternehmen und Selbstständigen Zeit",
-      desc: [
-        "Verbringen Sie Stunden mit wiederkehrender Handarbeit - Daten abtippen, dieselben E-Mails senden, Formulare ausfüllen? Ich baue eine Automatisierung, die das für Sie erledigt, und gebe Ihnen die Zeit zurück.",
-        "Ich verbinde Ihre Anwendungen, richte Workflows ein und setze KI ein, wo es sinnvoll ist. Statt Routine konzentrieren Sie sich auf das, was Ihr Geschäft trägt."
-      ],
-      contactLabel: "Kontakt",
-      footer: "© " + new Date().getFullYear() + " Roman ŠVESTKA"
-    }
-  };
-
-  function setLang(lang){
-    const t = i18n[lang];
-    document.documentElement.lang = t.htmlLang;
-    document.title = t.title;
-
-    document.querySelectorAll('[data-i18n]').forEach(el=>{
-      const key = el.getAttribute('data-i18n');
-      if(t[key] !== undefined) el.textContent = t[key];
-    });
-
-    const desc = document.getElementById('desc');
-    desc.innerHTML = '';
-    t.desc.forEach(par=>{
-      const p = document.createElement('p');
-      p.textContent = par;
-      desc.appendChild(p);
-    });
-
-    document.querySelectorAll('.lang button').forEach(b=>{
-      b.classList.toggle('active', b.dataset.lang === lang);
-    });
-  }
-
-  document.querySelectorAll('.lang button').forEach(btn=>{
-    btn.addEventListener('click', ()=> setLang(btn.dataset.lang));
-  });
-
-  setLang('cs');
+  document.getElementById('rok').textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
