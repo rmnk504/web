@@ -7,14 +7,13 @@
 <title>Roman ŠVESTKA</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
-  /* ===== BARVY - Písek + espresso ===== */
+  /* ===== BARVY - Krémová + elektrická fialová ===== */
   :root{
-    --bg: #EFE8DD;        /* písek */
-    --ink: #33291F;       /* espresso */
-    --accent: #9C6B48;    /* hlína */
-    --muted: #948a7c;     /* tlumená šedá */
+    --bg: #EBE3D9;        /* krémová */
+    --ink: #5B2CD6;       /* elektrická fialová */
+    --muted: #5B2CD6;     /* stejná fialová, jen se sníženou průhledností u ikon */
   }
 
   *{ box-sizing: border-box; margin: 0; padding: 0; }
@@ -23,9 +22,9 @@
   body{
     background: var(--bg);
     color: var(--ink);
-    font-family: 'Roboto Serif', serif;
-    font-weight: 300;
-    line-height: 1.7;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
     min-height: 100vh;
     min-height: 100dvh;
     display: flex;
@@ -34,7 +33,6 @@
     font-size: clamp(1rem, 0.95rem + 0.4vw, 1.15rem);
   }
 
-  /* Střed - jméno + kontakt zabírají volný prostor a jsou vycentrované */
   .center{
     flex: 1;
     display: flex;
@@ -42,12 +40,13 @@
     justify-content: center;
     padding: clamp(1.5rem, 6vw, 5rem);
   }
-  .wrap{ width: 100%; max-width: 520px; }
+  .wrap{ width: 100%; max-width: 560px; }
 
   h1{
-    font-weight: 500;
-    font-size: clamp(1.7rem, 1.3rem + 1.9vw, 2.5rem);
-    letter-spacing: -0.01em;
+    font-weight: 700;
+    font-size: clamp(1.9rem, 1.4rem + 2.3vw, 3rem);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
     margin-bottom: clamp(2rem, 6vh, 3rem);
   }
 
@@ -58,21 +57,20 @@
     gap: 0.55rem;
     margin-bottom: 0.6rem;
   }
-  .contact .row svg{ width: 1.05em; height: 1.05em; flex: none; color: var(--muted); }
+  .contact .row svg{ width: 1.05em; height: 1.05em; flex: none; opacity: 0.7; }
   .contact a{
     color: var(--ink);
     text-decoration: none;
-    border-bottom: 1px solid rgba(51,41,31,.3);
-    transition: color .2s ease, border-color .2s ease;
+    border-bottom: 1px solid rgba(91,44,214,.4);
+    transition: opacity .2s ease, border-color .2s ease;
     word-break: break-word;
   }
-  .contact a:hover{ color: var(--accent); border-color: var(--accent); }
+  .contact a:hover{ opacity: 0.7; }
 
-  /* Patička - pevně dole na obrazovce */
   footer{
     padding: 1.2rem;
     font-size: 0.8rem;
-    color: var(--muted);
+    opacity: 0.6;
   }
 </style>
 </head>
